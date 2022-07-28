@@ -7,8 +7,15 @@ SELECT COUNT ("endDate") as "currentExperiences" FROM experiences;
 SELECT "userId" AS id, COUNT ("userId") AS educations FROM educations GROUP BY "userId";
 
 --Exercicio 3
-SELECT user.name AS writer, COUNT (testimonials."recitipentId") as "testimonialCount"
+SELECT users.name AS writer, COUNT (testimonials."recipientId") as "testimonialCount"
 FROM testimonials
 JOIN users ON testimonials."writerId" = users.id
 WHERE users.id = 435
 GROUP BY writer;
+
+--Exercicio 4
+SELECT MAX(jobs.salary) AS "maximumSalary", roles.name AS role FROM jobs
+JOIN roles ON jobs."roleId" = roles.id
+WHERE jobs.active = true
+GROUP BY role
+ORDER BY "maximumSalary";
